@@ -66,5 +66,5 @@ export default defineComponent({
 .boarder-separeta
   border-top: 1px solid 
   border-bottom: 1px solid 
-  border-color: $grey-4
+  border-color: $grey-2
 </style>
