@@ -1,12 +1,16 @@
 <template>
   <q-page>
-    <div class="q-py-lg q-px-md">
-      <q-input
+    <div class="q-py-lg q-px-md row items-end q-col-gutter-md">
+
+      <div class="col">
+        <q-input
         bottom-slots
         v-model="newConfession"
         placeholder="I know you wanna Confess..."
         counter
         maxlength="280"
+        autogrow
+        class="new-confess"
       >
         <template v-slot:before>
           <q-avatar size="xl">
@@ -14,18 +18,28 @@
           </q-avatar>
         </template>
 
-        <template v-slot:after>
-          <q-btn 
+        
+      </q-input>
+      </div>
+      
+      <div class="col col-shrink">
+        <q-btn 
           :disable="!newConfession"
           unelevated 
+          class="q-mb-lg"
           rounded 
           color="primary" 
           label="confess" 
           no-caps 
           />
-        </template>
-      </q-input>
+      </div>
+
+
+      
     </div>
+
+    <q-separator size="10px" color="grey-2" class="boarder-separeta"/>
+
   </q-page>
 </template>
 
@@ -42,3 +56,15 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="sass">
+.new-confess
+  textarea
+    font-size: 19px
+    line-height: 1.4 !important
+
+.boarder-separeta
+  border-top: 1px solid 
+  border-bottom: 1px solid 
+  border-color: $grey-4
+</style>
