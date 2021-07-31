@@ -22,7 +22,7 @@
 
     <q-drawer
       show-if-above
-      v-model="leftDrawerOpen"
+      v-model="left"
       side="left"
       :width="283"
       bordered
@@ -124,7 +124,12 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <!-- //Make router view keep alive (ake the page that we just left alive in the background)
+       in the back ground even after we leave that page to avoid setting up the onSnapshot hook twice -->
+       <keep-alive>
+         <router-view />
+       </keep-alive>
+      
     </q-page-container>
   </q-layout>
 </template>
@@ -133,22 +138,28 @@
 import { ref } from "vue";
 
 export default {
-  setup() {
-    const leftDrawerOpen = ref(false);
-    const rightDrawerOpen = ref(false);
+  // setup() {
+  //   const leftDrawerOpen = ref(false);
+  //   const rightDrawerOpen = ref(false);
 
+  //   return {
+  //     leftDrawerOpen,
+  //     toggleLeftDrawer() {
+  //       leftDrawerOpen.value = !leftDrawerOpen.value;
+  //     },
+
+  //     rightDrawerOpen,
+  //     toggleRightDrawer() {
+  //       rightDrawerOpen.value = !rightDrawerOpen.value;
+  //     },
+  //   };
+  // },
+   data () {
     return {
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-
-      rightDrawerOpen,
-      toggleRightDrawer() {
-        rightDrawerOpen.value = !rightDrawerOpen.value;
-      },
-    };
-  },
+      left: false,
+      right: false
+    }
+  }
 };
 </script>
 
